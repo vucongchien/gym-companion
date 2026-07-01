@@ -19,13 +19,26 @@ When a conventional commit type is present, format the message as:
 <emoji> <type>(scope): <description>
 
 [optional body]
+
+[optional footer(s)]
 ```
-*(Note: `scope` is optional)*
 
 ### Examples:
-- `✨ feat(auth): add google login` (with scope)
-- `🐛 fix: resolve deadlock on transaction` (without scope)
-- `docs: update installation steps` (no conventional emoji matched, or if emoji is not desired/applicable)
+
+- Single-line commit:
+  `✨ feat(auth): add google login`
+- Multi-line commit with body and footer:
+  ```
+  🐛 fix(db): resolve deadlock on transaction
+
+  The database was experiencing deadlocks when concurrent transactions tried to update the user balance. Wrapping the update query in a row lock resolves this issue.
+
+  Closes #42
+  ```
+- Reference commit (no conventional emoji matched, or emoji not used):
+  `docs(readme): update installation steps`
+
+
 
 ## Conventional Commit Types and Gitmojis
 
@@ -68,7 +81,7 @@ For more specific scenarios, use these combinations:
 2. **Draft the message**:
    - Determine the Conventional Commit `type` (e.g. `feat`, `fix`, `docs`).
    - If a type is identified, prepend the corresponding Gitmoji from the table above.
-   - `scope` is **optional**. Use it only if it adds valuable context (e.g., `(db)`, `(auth)`).
+   - Use scope if it adds valuable context (e.g., `(db)`, `(auth)`).
    - Write a short, imperative description (e.g., `add google login`, NOT `added google login`).
 3. **Execute commit**:
    - Stage files: `git add <files>`
